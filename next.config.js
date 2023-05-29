@@ -4,7 +4,7 @@ const nextConfig = {
 		domains: ["i.scdn.co",'localhost'],
 		// remotePatterns: [
 		// 	{
-		// 		protocol: "https",
+		// 		protocol: "http",
 		// 		hostname: "i.scdn.co",
 		// 		port: "",
 		// 		pathname: "/image/**",
