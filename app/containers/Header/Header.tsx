@@ -9,7 +9,7 @@ const Header = (props: Props) => {
 		<div className="bg-white shadow-md">
 			<div
 				className={
-					"flex items-center gap-2 justify-between container p-4 mx-auto"
+					"flex items-center gap-2 justify-between container px-2 py-4 mx-auto"
 				}
 			>
 				<Link href={"/"} className="flex items-center gap-2">
