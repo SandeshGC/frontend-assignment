@@ -1,4 +1,4 @@
-import Image from "next/image"
+// import Image from "next/image"
 import React from "react"
 
 type Props = {
@@ -14,14 +14,27 @@ const page = (props: Props) => {
 				Bimbaakash {props.params.album}
 			</h1>
 			<div className="my-4 flex gap-8 items-start">
-				<Image
-					src="/album1.jpg"
-					width={500}
-					height={500}
+				<img
+					src="https://i.scdn.co/image/ab67616d0000b27367c738a703dc979f5c3c52ef"
 					alt="Album 1"
 					className="w-2/5 border-2 border-red-600 object-cover rounded-lg"
 				/>
 
+				<div className="relative h-[640px] w-[640px]">
+					{/* <Image
+						alt=""
+						fill={true}
+						priority
+						src={
+							"https://i.scdn.co/image/ab67616d0000b27367c738a703dc979f5c3c52ef"
+						}
+						sizes="(min-width: 60em) 24vw,
+					(min-width: 28em) 45vw,
+					100vw"
+						unoptimized
+						className="w-2/5 border-2 border-red-600 object-cover rounded-lg"
+					/> */}
+				</div>
 				<div className="w-3/5">
 					<h2 className="text-2xl font-semibold">Author: Bartika Eam Rai</h2>
 					<p className="text-xl">Released on: 2016</p>
@@ -41,13 +54,13 @@ const page = (props: Props) => {
 				<h2 className="text-2xl font-semibold leading-loose">Other Albums</h2>
 				<div className="flex gap-6">
 					<div className="flex gap-8 items-start">
-						<Image
+						{/* <Image
 							src="/album1.jpg"
 							width={200}
 							height={200}
 							alt="Album 1"
 							className="border-2 border-red-600 rounded-lg"
-						/>
+						/> */}
 						<div>
 							<h1 className="text-xl font-semibold">Bimbaakash</h1>
 							<h2 className="text-lg">Author: Bartika Eam Rai</h2>
@@ -63,13 +76,13 @@ const page = (props: Props) => {
 						</div>
 					</div>
 					<div className="flex gap-8 items-start">
-						<Image
+						{/* <Image
 							src="/album1.jpg"
 							width={200}
 							height={200}
 							alt="Album 1"
 							className="border-2 border-red-600 rounded-lg"
-						/>
+						/> */}
 						<div>
 							<h1 className="text-xl font-semibold">Bimbaakash</h1>
 							<h2 className="text-lg">Author: Bartika Eam Rai</h2>
