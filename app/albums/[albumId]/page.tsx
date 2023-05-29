@@ -9,7 +9,7 @@ type Props = {
 
 const getAlbumDetails = async (id: string) => {
 	const url: string = `https://spotify-data.p.rapidapi.com/album_metadata/?id=${id}`
-	const options = {
+	const options:any = {
 		method: "GET",
 		headers: {
 			"X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
