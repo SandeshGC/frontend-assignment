@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import React, { use } from "react"
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
 
 const getAlbumDetails = async (id: string) => {
 	const url: string = `https://spotify-data.p.rapidapi.com/album_metadata/?id=${id}`
-	const options:any = {
+	const options: any = {
 		method: "GET",
 		headers: {
 			"X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
@@ -28,27 +29,25 @@ const getAlbumDetails = async (id: string) => {
 
 const page = (props: Props) => {
 	const { album } = use(getAlbumDetails(props.params.albumId))
-	const artists = album.artists?.items.map(
+	const artists = album?.artists?.items.map(
 		(artist: { profile: { name: string } }) => artist.profile.name
 	)
 	return (
 		<div className="container mx-auto p-4">
 			<div className="my-4 flex gap-8 items-start">
-				<div className="w-3/6 h-[500px] max-w-[500px] relative object-cover rounded-lg">
-					<Image
-						alt={album.name}
-						fill={true}
-						priority
-						src={album.coverArt.sources[0].url}
-						sizes="(min-width: 60em) 24vw,
-						(min-width: 28em) 45vw,
-						100vw"
-						unoptimized
-						className="shadow object-cover rounded-lg"
-					/>
+				<div className="w-3/6 h-full aspect-square max-w-[500px] relative object-cover rounded-lg">
+					<div className="h-full relative">
+						<Image
+							alt={album?.name}
+							fill={true}
+							src={album?.coverArt.sources[0].url}
+							unoptimized
+							className="shadow object-cover aspect-square h-full rounded-lg"
+						/>
+					</div>
 				</div>
 				<div className="w-3/6">
-					<h1 className="text-3xl font-semibold">{album.name}</h1>
+					<h1 className="text-3xl font-semibold">{album?.name}</h1>
 					<h2 className="text-2xl font-semibold text-gray-500 gap-2 flex">
 						{artists?.map((artist: string) => (
 							<span key={artist}>{artist}</span>
