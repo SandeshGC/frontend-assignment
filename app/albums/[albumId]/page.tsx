@@ -1,3 +1,4 @@
+import AlbumCardMd from "@/app/components/AlbumCardMd"
 import Image from "next/image"
 import Link from "next/link"
 import React, { use } from "react"
@@ -27,12 +28,31 @@ const getAlbumMetadata: any = async (id: string) => {
 	}
 }
 
-const EachAlbumPage = (props: Props) => {
-	const data = use<any>(
-		getAlbumMetadata(props.params.albumId)
-	)
+const getAlbumTracks = async (id: string) => {
+	const url: string = `https://spotify117.p.rapidapi.com/get_album_tracks/?album_id=${id}`
+	const options: any = {
+		method: "GET",
+		headers: {
+			"X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
+			"X-RapidAPI-Host": "spotify117.p.rapidapi.com",
+		},
+	}
 
-	const { name, coverArt, artists, tracks, date, label, moreAlbumsByArtist } = data
+	try {
+		const response = await fetch(url, options)
+		const result = await response.json()
+		return result.items
+	} catch (error) {
+		console.error(error)
+	}
+}
+
+const EachAlbumPage = (props: Props) => {
+	const data = use<any>(getAlbumMetadata(props.params.albumId))
+
+	const { name, coverArt, artists, date, label, moreAlbumsByArtist } = data
+
+	const tracks = use<any>(getAlbumTracks(props.params.albumId))
 
 	const artistsDetails = artists?.items?.map((artist: any) => ({
 		artistId: artist?.id,
@@ -55,8 +75,8 @@ const EachAlbumPage = (props: Props) => {
 					</div>
 				</div>
 				<div className="w-3/6">
-					<h1 className="text-3xl font-semibold">{name} </h1>
-					<h2 className="text-2xl font-semibold text-gray-500 gap-2 flex">
+					<h1 className="text-3xl font-bold">{name} </h1>
+					<h2 className="text-xl font-semibold text-gray-500 gap-2 flex">
 						by
 						{artistsDetails?.map((artist: any) => (
 							<span key={artist.artistId}>{artist.artistName}</span>
@@ -68,6 +88,15 @@ const EachAlbumPage = (props: Props) => {
 					</p>
 
 					<p>{label}</p>
+
+					<div>
+						Tracks:
+						{tracks.map((t: any) => (
+							<li key={t?.id} className="text-gray-500 indent-4 list-disc">
+								{t?.name}
+							</li>
+						))}
+					</div>
 				</div>
 			</div>
 
@@ -94,24 +123,7 @@ const EachAlbumPage = (props: Props) => {
 								item?.releases?.items[0]?.coverArt?.sources[0]?.url
 							return (
 								<Link href={`/albums/${id}`} key={id}>
-									<div className="flex gap-6 shadow-md border hover:shadow-lg rounded-md group">
-										<div className="grid grid-cols-9 gap-8 items-start group ">
-											<div className="h-[200px] col-start-1 col-end-5 overflow-hidden relative group">
-												<Image
-													src={coverArt}
-													width={200}
-													height={200}
-													alt={name}
-													unoptimized
-													className="group-hover:scale-110 shadow-md rounded-tl-md rounded-bl-md h-[200px] w-[200px] object-cover duration-300 transition-all ease-in-out "
-												/>
-											</div>
-											<div className="col-start-5 col-end-10 p-4">
-												<h1 className="text-xl font-semibold">{name}</h1>
-												<p className="text-gray-400 text-sm">{year}</p>
-											</div>
-										</div>
-									</div>
+									<AlbumCardMd name={name} year={year} coverArt={coverArt} />
 								</Link>
 							)
 						}
