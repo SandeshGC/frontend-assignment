@@ -27,7 +27,7 @@ const getAlbumMetadata: any = async (id: string) => {
 	}
 }
 
-const page = (props: Props) => {
+const EachAlbumPage = (props: Props) => {
 	const data = use<any>(
 		getAlbumMetadata(props.params.albumId)
 	)
@@ -122,4 +122,4 @@ const page = (props: Props) => {
 	)
 }
 
-export default page
+export default EachAlbumPage
