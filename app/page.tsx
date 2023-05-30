@@ -2,14 +2,12 @@ import { use } from "react"
 import { HomeAlbumCard } from "./components"
 import Link from "next/link"
 const getAlbums = async () => {
-	const url: string =
-		"https://spotify-data.p.rapidapi.com/albums/?ids=3IBcauSj5M2A6lTeffJzdv,1DF9B2hfwX4EdgEFwGcRwh,1m8eXQqp3QCQyR56fgbm6o,2yuQqhSklmfWgn8lmJNk5t,4XLPYMERZZaBzkJg0mkdvO,1MmVkhiwTH0BkNOU3nw5d3,4OanbmuJAWz8JPVE4cJA9L,21jF5jlMtzo94wbxmJ18aa,3AvPX1B1HiFROvYjLb5Qwi,59ULskOkBMij4zL8pS7mi0,224jZ4sUX7OhAuMwaxp86S"
-
+	const url = "https://spotify117.p.rapidapi.com/new_releases/?country=us"
 	const options: any = {
 		method: "GET",
 		headers: {
 			"X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
-			"X-RapidAPI-Host": "spotify-data.p.rapidapi.com",
+			"X-RapidAPI-Host": "spotify117.p.rapidapi.com",
 		},
 	}
 
@@ -39,10 +37,10 @@ export default function Home() {
 				/>
 			</div> */}
 
+			<h2 className="text-3xl font-semibold leading-loose">New Releases</h2>
 			<div className="my-4 grid grid-cols-1 md:grid-cols-3 items-start align-middle object-contain gap-8">
-				{/* <h2 className="text-2xl font-semibold leading-loose">Other Albums</h2> */}
-				{albums.length ? (
-					albums?.map((album: any) => (
+				{albums?.items?.length ? (
+					albums?.items?.map((album: any) => (
 						<Link key={album.id} href={`/albums/${album.id}`}>
 							<HomeAlbumCard album={album} />
 						</Link>
