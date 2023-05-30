@@ -1,4 +1,6 @@
 import AlbumCardMd from "@/app/components/AlbumCardMd"
+import { Metadata } from "next"
+import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import React, { use } from "react"
@@ -62,6 +64,9 @@ const EachAlbumPage = (props: Props) => {
 
 	return (
 		<div className="container mx-auto p-4">
+			<Head>
+				<title>Music World</title>
+			</Head>
 			<div className="my-4 flex gap-8 items-start">
 				<div className="w-3/6 h-full aspect-square max-w-[500px] relative object-cover rounded-lg">
 					<div className="h-full relative">

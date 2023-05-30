@@ -1,6 +1,7 @@
 import { use } from "react"
 import { HomeAlbumCard } from "./components"
 import Link from "next/link"
+
 const getAlbums = async () => {
 	const url = "https://spotify117.p.rapidapi.com/new_releases/?country=us"
 	const options: any = {
