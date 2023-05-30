@@ -67,19 +67,19 @@ const SearchResultsPage = (props: Props) => {
 					<Link
 						key={album.id}
 						href={`/albums/${album.id}`}
-						className="shadow hover:shadow-md group border-2 my-4 p-4 rounded-lg duration-300 transition ease-in-out"
+						className="shadow hover:shadow-md group border-2 my-4 p-4 rounded-lg duration-300 transition ease-in-out overflow-hidden"
 					>
-						<div className="flex my-4 group">
+						<div className="flex my-4 group overflow-hidden rounded">
 							<Image
 								src={album.coverArt}
-								className="rounded"
+								className="rounded group-hover:scale-105 transition-transform duration-300 ease-in-out"
 								alt={album.name}
 								width={96}
 								height={96}
 								unoptimized
 							/>
 							<div className="ml-4 group">
-								<h2 className="text-xl group-hover:text-highlight">
+								<h2 className="text-xl group-hover:text-highlight duration-300 ease-in-out">
 									{album.name}
 								</h2>
 								<h3 className="text-gray-500">{album.artists.join(", ")}</h3>
