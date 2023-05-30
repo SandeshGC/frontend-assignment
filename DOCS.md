@@ -2,7 +2,7 @@
 
 ### Setup:
 
-- Clone the repo `and `cd` into the project directory
+- Clone the repo `https://github.com/SandeshGC/frontend-assignment.git` and `cd` into the project directory
 
 - Run `yarn install` or `npm install` to install all the dependencies
 
