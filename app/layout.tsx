@@ -27,7 +27,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={`${inter.className} flex flex-col`}>
 				<Header />
-				<main>{children}</main>
+				<main className="mt-[80px]">{children}</main>
 				<Footer />
 			</body>
 		</html>
