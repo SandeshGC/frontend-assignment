@@ -1,10 +1,6 @@
 import { use } from "react"
 import { HomeAlbumCard } from "./components"
 import Link from "next/link"
-import { Inter } from "next/font/google"
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-
 const getAlbums = async () => {
 	const url: string =
 		"https://spotify-data.p.rapidapi.com/albums/?ids=3IBcauSj5M2A6lTeffJzdv,1DF9B2hfwX4EdgEFwGcRwh,1m8eXQqp3QCQyR56fgbm6o,2yuQqhSklmfWgn8lmJNk5t,4XLPYMERZZaBzkJg0mkdvO,1MmVkhiwTH0BkNOU3nw5d3,4OanbmuJAWz8JPVE4cJA9L,21jF5jlMtzo94wbxmJ18aa,3AvPX1B1HiFROvYjLb5Qwi,59ULskOkBMij4zL8pS7mi0,224jZ4sUX7OhAuMwaxp86S"
@@ -29,7 +25,7 @@ const getAlbums = async () => {
 export default function Home() {
 	const { albums } = use<any>(getAlbums())
 	return (
-		<div className={`container mx-auto p-4 ${inter.className}`}>
+		<div className={`container mx-auto p-4`}>
 			{/* <div>
 				<h1 className="text-3xl font-semibold leading-loose">
 					Trending Albums
