@@ -1,6 +1,9 @@
 import { use } from "react"
 import { HomeAlbumCard } from "./components"
 import Link from "next/link"
+import { Inter } from "next/font/google"
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
 const getAlbums = async () => {
 	const url: string =
@@ -26,7 +29,7 @@ const getAlbums = async () => {
 export default function Home() {
 	const { albums } = use<any>(getAlbums())
 	return (
-		<div className="container mx-auto p-4">
+		<div className={`container mx-auto p-4 ${inter.className}`}>
 			{/* <div>
 				<h1 className="text-3xl font-semibold leading-loose">
 					Trending Albums

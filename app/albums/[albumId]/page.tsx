@@ -21,15 +21,18 @@ const getAlbumMetadata: any = async (id: string) => {
 	try {
 		const response = await fetch(url, options)
 		const result = await response.json()
-		return result.data.album
+		return result?.data?.album
 	} catch (error) {
 		console.error(error)
 	}
 }
 
 const page = (props: Props) => {
-	const { name, coverArt, artists, tracks, date, label, moreAlbumsByArtist } =
-		use<any>(getAlbumMetadata(props.params.albumId))
+	const data = use<any>(
+		getAlbumMetadata(props.params.albumId)
+	)
+
+	const { name, coverArt, artists, tracks, date, label, moreAlbumsByArtist } = data
 
 	const artistsDetails = artists?.items?.map((artist: any) => ({
 		artistId: artist?.id,
@@ -52,22 +55,19 @@ const page = (props: Props) => {
 					</div>
 				</div>
 				<div className="w-3/6">
-					<h1 className="text-3xl font-semibold">{name}</h1>
+					<h1 className="text-3xl font-semibold">{name} </h1>
 					<h2 className="text-2xl font-semibold text-gray-500 gap-2 flex">
+						by
 						{artistsDetails?.map((artist: any) => (
 							<span key={artist.artistId}>{artist.artistName}</span>
 						))}
 					</h2>
+
 					<p className="">
 						Released on: {new Date(date?.isoString).getFullYear()}
 					</p>
 
-					<p>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique,
-						totam voluptatibus, eligendi doloremque aut voluptatum dolorum
-						consequuntur mollitia nesciunt animi vitae, illo quis dolorem quasi
-						sint commodi quo possimus quas?
-					</p>
+					<p>{label}</p>
 				</div>
 			</div>
 

@@ -6,7 +6,6 @@ type Props = {
 }
 
 const HomeAlbumCard = ({ album }: Props) => {
-	// console.log(album?.images[0].url, "img")
 	return (
 		<div className="shadow my-4 p-4 max-w-[400px] rounded-lg border hover:shadow-lg group transition duration-500 ease-in-out">
 			<div className="relative h-[350px] w-full mx-auto group mb-4 rounded-md overflow-hidden">
@@ -14,7 +13,7 @@ const HomeAlbumCard = ({ album }: Props) => {
 					src={album?.images[0].url}
 					fill={true}
 					alt={album.name}
-					className="rounded-md object-contain h-[300px] w-full group-hover:scale-110 group-hover:opacity-80 transition duration-500 ease-in-out"
+					className="rounded-md object-contain aspect-square h-[350px] w-full group-hover:scale-110 group-hover:opacity-80 transition duration-500 ease-in-out"
 					unoptimized
 				/>
 			</div>

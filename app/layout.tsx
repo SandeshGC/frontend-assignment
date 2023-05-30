@@ -2,7 +2,7 @@ import { Footer, Header } from "./containers"
 import "./globals.css"
 import { Inter } from "next/font/google"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const inter = Inter({ subsets: ["latin"]})
 
 export default function RootLayout({
 	children,
