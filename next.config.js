@@ -2,16 +2,15 @@
 const nextConfig = {
 	reactStrictMode: false,
 	images: {
-		// domains: ["i.scdn.co",'localhost'],
+		domains: ["i.scdn.co"],
 		remotePatterns: [
 			{
-				protocol: "http",
+				protocol: "https",
 				hostname: "i.scdn.co",
 				port: "",
 				pathname: "/image/**",
 			},
 		],
-	
 	},
 }
 

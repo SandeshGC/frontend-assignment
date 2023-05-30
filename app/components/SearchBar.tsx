@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 type Props = {}
@@ -7,9 +8,10 @@ type Props = {}
 const SearchBar = (props: Props) => {
 	const [query, setQuery] = useState("")
 
-	const handleSearch = () => {
-        
-		console.log("search")
+	const { push } = useRouter()
+	const handleSearch = async () => {
+		const queryString = new URLSearchParams({ query })
+		push("/search?" + queryString)
 	}
 
 	return (
