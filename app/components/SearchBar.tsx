@@ -12,13 +12,14 @@ const SearchBar = (props: Props) => {
 	const handleSearch = async () => {
 		const queryString = new URLSearchParams({ query })
 		push("/search?" + queryString)
+		setQuery("")
 	}
 
 	return (
 		<label htmlFor="search" className="flex relative">
 			<input
 				type="text"
-				placeholder="Search..."
+				placeholder="Search for albums..."
 				value={query}
 				onChange={(e) => setQuery(e.target.value)}
 				id="search"
@@ -27,7 +28,7 @@ const SearchBar = (props: Props) => {
 						handleSearch()
 					}
 				}}
-				className="border-2 border-gray-300 rounded-lg p-2 "
+				className="border-2 border-gray-300 rounded-lg p-2 focus:outline-highlight"
 			/>
 
 			<div
